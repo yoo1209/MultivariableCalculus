@@ -15,8 +15,8 @@ axis equal;
 clear all
 rmin = @(p,t) (cos(t)-sqrt(cos(t).^2-4/2*sin(t).^2.*cos(2*p)))./(2*sin(t).^2.*cos(2*p));
 tmax = @(p) acos((-1+sqrt(1+4*cos(2*p).*(1/2+cos(2*p))))./(2*cos(2*p)));
-f = @(p,t,r) 2*sin(t) + cos(t)./r;
-integral3(f,0,2*pi,0,tmax,rmin,1)
+f = @(p,t,r) 2*r.*sin(t) + cos(t);
+integral3(f,0,2*pi,0,pi,0,1)-integral3(f,0,2*pi,0,tmax,rmin,1)
 
 %% #2(b)
 clear all
@@ -46,14 +46,16 @@ surf(x,y,z);
 axis equal;
 
 f = @(x,y,z) x.^2+y.^2+z.^2;
-lambda = fzero(@(t)27*t^4-54*t^3+16,.2);
+lambda1 = fzero(@(t)27*t^4-54*t^3+16,.2);
+lambda2 = fzero(@(t)27*t^4-54*t^3+16,2);
 X = [ 0, 0, 2, 4 ;
-    2/3/lambda, 0, 2-(2/3/lambda)^2, lambda ;
+    2/3/lambda1, 0, 2-(2/3/lambda1)^2, lambda1 ;
+    2/3/lambda2, 0, 2-(2/3/lambda2)^2, lambda2 ;
     2/3, -sqrt(65/54), 1/2, 1 ;
     2/3, sqrt(65/54), 1/2, 1 ;
     0, -sqrt(3/2), 1/2, 1;
     0, sqrt(3/2), 1/2, 1 ]; % This is minimum point
 sqrt(f(X(:,1),X(:,2),X(:,3)))
-plot3(X(1:4,1),X(1:4,2),X(1:4,3),'.b','markersize',20); 
-plot3(X(5:6,1),X(5:6,2),X(5:6,3),'.r','markersize',20); hold off;
+plot3(X(1:5,1),X(1:5,2),X(1:5,3),'.b','markersize',20); 
+plot3(X(6:7,1),X(6:7,2),X(6:7,3),'.r','markersize',20); hold off;
 xlabel('x');
