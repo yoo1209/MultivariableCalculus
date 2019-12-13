@@ -54,7 +54,7 @@ X = [ 0, 0, 2, 4 ;
     2/3, -sqrt(65/54), 1/2, 1 ;
     2/3, sqrt(65/54), 1/2, 1 ;
     0, -sqrt(3/2), 1/2, 1;
-    0, sqrt(3/2), 1/2, 1 ]; % This is minimum point
+    0, sqrt(3/2), 1/2, 1 ] % This is minimum point
 sqrt(f(X(:,1),X(:,2),X(:,3)))
 plot3(X(1:5,1),X(1:5,2),X(1:5,3),'.b','markersize',20); 
 plot3(X(6:7,1),X(6:7,2),X(6:7,3),'.r','markersize',20); hold off;
